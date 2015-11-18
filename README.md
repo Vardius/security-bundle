@@ -1,7 +1,7 @@
 Vardius - SecurityBundle Bundle
 ======================================
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/6696b21e-47c8-4b2c-96c3-f2163ee98e22/big.png)](https://insight.sensiolabs.com/projects/6696b21e-47c8-4b2c-96c3-f2163ee98e22)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3d20783b-62b6-43f8-8123-e8636c21e2e4/big.png)](https://insight.sensiolabs.com/projects/3d20783b-62b6-43f8-8123-e8636c21e2e4)
 
 Security Bundle provides acl
 
@@ -16,7 +16,7 @@ Contributors:
 Want to contribute ? Feel free to send pull requests!
 
 Have problems, bugs, feature ideas?
-We are using the github [issue tracker](https://github.com/vardius/user-bundle/issues) to manage them.
+We are using the github [issue tracker](https://github.com/vardius/security-bundle/issues) to manage them.
 
 HOW TO USE
 ==================================================
