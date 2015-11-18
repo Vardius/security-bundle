@@ -1,0 +1,29 @@
+{
+    "name": "vardius/security-bundle",
+    "description": "Symfony security bundle",
+    "keywords": [
+        "security", "security bundle", "symfony2", "bundle", "symfony"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/Vardius/security-bundle",
+    "authors": [
+        {
+          "name": "Rafał Lorenz",
+          "email": "vardius@gmail.com",
+          "homepage": "http://rafallorenz.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "symfony/symfony": ">=2.6"
+    },
+    "target-dir": "Vardius/Bundle/SecurityBundle",
+    "autoload": {
+        "psr-0": { "Vardius\\Bundle\\SecurityBundle": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}

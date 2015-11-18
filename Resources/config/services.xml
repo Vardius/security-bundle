@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <!-- VOTER -->
+        <parameter key="vardius_security.voter.class">Vardius\Bundle\SecurityBundle\Security\Authorization\Voter\Voter</parameter>
+        <parameter key="vardius_security.voter_type_pool.class">Vardius\Bundle\SecurityBundle\Security\Authorization\Voter\VoterTypePool</parameter>
+        <parameter key="vardius_security.voter.supported_class_pool.class">Vardius\Bundle\SecurityBundle\Security\Authorization\Voter\SupportedClassPool</parameter>
+        <parameter key="vardius_security.voter_type.owner.class">Vardius\Bundle\SecurityBundle\Security\Authorization\Voter\Type\OwnerType</parameter>
+        <!-- ANNOTATION -->
+        <parameter key="vardius_security.annotation_reader.owner.class">Vardius\Bundle\SecurityBundle\Annotation\Reader\OwnerConverter</parameter>
+    </parameters>
+
+    <services>
+        <!--VOTER-->
+        <service id="vardius_security.voter" class="%vardius_security.voter.class%" public="false">
+            <argument type="service" id="vardius_security.voter_type_pool"/>
+            <argument type="service" id="vardius_security.voter.supported_class_pool"/>
+            <argument>%vardius_security.userClass%</argument>
+
+            <tag name="security.voter" />
+        </service>
+
+        <service id="vardius_security.voter_type_pool" class="%vardius_security.voter_type_pool.class%" />
+
+        <service id="vardius_security.voter.supported_class_pool" class="%vardius_security.voter.supported_class_pool.class%" />
+
+        <service id="vardius_security.voter_type.owner" class="%vardius_security.voter_type.owner.class%" public="false">
+            <argument type="service" id="vardius_security.annotation_reader.owner"/>
+
+            <tag name="vardius_security.voter_type" />
+        </service>
+
+        <!--ANNOTATION-->
+        <service id="vardius_security.annotation_reader.owner" class="%vardius_security.annotation_reader.owner.class%" public="false">
+            <argument type="service" id="annotations.reader"/>
+        </service>
+    </services>
+</container>
