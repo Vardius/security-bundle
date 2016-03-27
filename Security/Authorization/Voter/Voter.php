@@ -10,7 +10,8 @@
 
 namespace Vardius\Bundle\SecurityBundle\Security\Authorization\Voter;
 
-use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\Voter as BaseVoter;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @package Vardius\Bundle\SecurityBundle\Security\Authorization\Voter
  * @author Rafał Lorenz <vardius@gmail.com>
  */
-class Voter extends AbstractVoter
+class Voter extends BaseVoter
 {
     /** @var VoterTypePool */
     protected $typesPool;
@@ -43,24 +44,21 @@ class Voter extends AbstractVoter
     /**
      * @inheritDoc
      */
-    protected function getSupportedAttributes()
+    public function supports($attribute, $subject)
     {
-        return $this->typesPool->getTypes()->getKeys();
+        $supportedClass = $this->classesPool->getClasses();
+        $attributes = $this->typesPool->getTypes()->getKeys();
+
+        return $subject instanceof $supportedClass && in_array($attribute, $attributes);
     }
 
     /**
      * @inheritDoc
      */
-    protected function getSupportedClasses()
+    protected function voteOnAttribute($attribute, $object, TokenInterface $token)
     {
-        return $this->classesPool->getClasses();
-    }
+        $user = $token->getUser();
 
-    /**
-     * @inheritDoc
-     */
-    protected function isGranted($attribute, $object, $user = null)
-    {
         if (!$user instanceof UserInterface) {
             return false;
         }
