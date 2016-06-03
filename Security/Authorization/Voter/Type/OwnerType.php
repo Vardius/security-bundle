@@ -36,7 +36,7 @@ class OwnerType implements VoterTypeInterface
     /**
      * @inheritDoc
      */
-    public function isGranted($object, $user = null)
+    public function isGranted($object, $user = null):int
     {
         $owners = $this->converter->convert($object);
 
@@ -56,7 +56,7 @@ class OwnerType implements VoterTypeInterface
     /**
      * @inheritDoc
      */
-    public function getAttribute()
+    public function getAttribute():string
     {
         return 'isOwner';
     }

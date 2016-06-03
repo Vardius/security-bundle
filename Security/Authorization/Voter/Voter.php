@@ -34,7 +34,7 @@ class Voter extends BaseVoter
      * @param SupportedClassPool $classesPool
      * @param string $userClass
      */
-    public function __construct(VoterTypePool $typesPool, SupportedClassPool $classesPool, $userClass)
+    public function __construct(VoterTypePool $typesPool, SupportedClassPool $classesPool, string $userClass)
     {
         $this->typesPool = $typesPool;
         $this->classesPool = $classesPool;
@@ -44,7 +44,7 @@ class Voter extends BaseVoter
     /**
      * @inheritDoc
      */
-    public function supports($attribute, $subject)
+    public function supports($attribute, $subject):bool
     {
         $supportedClass = $this->classesPool->getClasses();
         $attributes = $this->typesPool->getTypes()->getKeys();
@@ -55,7 +55,7 @@ class Voter extends BaseVoter
     /**
      * @inheritDoc
      */
-    protected function voteOnAttribute($attribute, $object, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $object, TokenInterface $token):bool
     {
         $user = $token->getUser();
 
@@ -71,5 +71,4 @@ class Voter extends BaseVoter
 
         return $type->isGranted($object, $user);
     }
-
 }

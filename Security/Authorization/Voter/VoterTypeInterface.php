@@ -19,13 +19,13 @@ interface VoterTypeInterface
 {
     /**
      * @param $object
-     * @param null $user
-     * @return bool
+     * @param $user
+     * @return int
      */
-    public function isGranted($object, $user = null);
+    public function isGranted($object, $user = null):int;
 
     /**
      * @return string
      */
-    public function getAttribute();
+    public function getAttribute():string;
 }

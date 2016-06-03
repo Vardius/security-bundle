@@ -33,15 +33,16 @@ class SupportedClassPool
     /**
      * @return ArrayCollection
      */
-    public function getClasses()
+    public function getClasses():ArrayCollection
     {
         return $this->classes;
     }
 
     /**
      * @param string $class
+     * @return SupportedClassPool
      */
-    public function addClass($class)
+    public function addClass(string $class):self
     {
         if (!$this->classes->contains($class)) {
             $this->classes->add($class);
@@ -52,10 +53,9 @@ class SupportedClassPool
      * @param ArrayCollection $classes
      * @return SupportedClassPool
      */
-    public function setClasses($classes)
+    public function setClasses(ArrayCollection $classes):self
     {
         $this->classes = $classes;
         return $this;
     }
-
 }

@@ -28,4 +28,3 @@ class VardiusSecurityExtension extends Extension
         $loader->load('services.xml');
     }
 }
-

@@ -38,7 +38,7 @@ class OwnerConverter
      * @param $object
      * @return array
      */
-    public function convert($object)
+    public function convert($object):array
     {
         $reflectionObject = new \ReflectionObject($object);
 
@@ -60,5 +60,4 @@ class OwnerConverter
 
         return $owners;
     }
-
 }

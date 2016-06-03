@@ -33,26 +33,27 @@ class VoterTypePool
     /**
      * @return ArrayCollection
      */
-    public function getTypes()
+    public function getTypes():ArrayCollection
     {
         return $this->types;
     }
 
     /**
      * @param VoterTypeInterface $type
+     * @return VoterTypePool
      */
-    public function addType(VoterTypeInterface $type)
+    public function addType(VoterTypeInterface $type):self
     {
         $this->types->set($type->getAttribute(), $type);
+        return $this;
     }
 
     /**
      * @param string $id
      * @return VoterTypeInterface
      */
-    public function getType($id)
+    public function getType(string $id):VoterTypeInterface
     {
         return $this->types->get($id);
     }
-
 }
