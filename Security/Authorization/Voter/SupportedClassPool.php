@@ -47,6 +47,7 @@ class SupportedClassPool
         if (!$this->classes->contains($class)) {
             $this->classes->add($class);
         }
+        return $this;
     }
 
     /**
